@@ -1,0 +1,24 @@
+{% extends "blog/base.html"  %}
+ 
+{% block content %}  
+ {% for post in posts %} 
+<div class="card mb-4">
+       
+    <img class="card-img-top" src="#" alt="Card image cap">
+    <div class="card-body">
+     
+      <h2 class="card-title"><a href="#">{{ post.title|capfirst }}</a></h2>
+      <p class="card-text">{{ post.content|truncatechars:"150" }}</p>
+      <a href="{% url 'detail' post.id %}" class="btn btn-primary">Read More →</a>
+    </div>
+    <div class="card-footer text-muted">
+      Posted on {{ post.pub_date }} by 
+      <a href="#">{{ post.authoer.name }}</a>
+    </div>
+  </div>
+        {% empty %}
+            <p>There are no posts</p>
+        </div> 
+    </div>
+ {% endfor %} 
+{% endblock %}

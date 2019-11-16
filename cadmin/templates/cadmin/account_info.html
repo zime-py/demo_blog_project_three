@@ -1,0 +1,25 @@
+{% extends "cadmin/admin_page.html" %}
+
+{% block main %}
+ 
+    <div class="main">
+        <div class="section-inner clearfix">
+ 
+        <p>Welcome <font size="4"><strong>{{ request.user.username }} !</strong></font></p>
+ 
+        <p>User Details:</p>
+ 
+        <ul>
+            <li>Email: {{ request.user.username.email|default:"NA" }}</li>
+            <li>SuperUser: {{ request.user.is_superuser }}</li>
+            <li>Staff: {{ request.user.is_staff }}</li>
+            <li>Date Joined: {{ request.user.date_joined }}</li>
+            <li>Last Login: {{ request.user.last_login }}</li>
+        </ul>
+ 
+        <!-- <p><a href="{% url 'blog_logout' %}">Logout</a></p> -->
+ 
+         </div>
+    </div> 
+ 
+{% endblock %}
