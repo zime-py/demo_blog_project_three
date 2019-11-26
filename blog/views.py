@@ -1,17 +1,19 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .forms import ContactForm
+from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
+
+from my_first_blog import helpers
+
+from .forms import ContactForm
 from .models import *
 
-from django.contrib import messages
-
-from django.core.mail import send_mail
-
-from django.contrib import auth
-from django.contrib.auth.decorators import login_required
 
 def post_list(request):
     posts = Post.objects.all()
+    posts = helpers.pg_records(request, posts, 2)
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, id):  
@@ -74,3 +76,7 @@ def admin_page(request):
         return redirect('blog_login')       
  
     return render(request, 'cadmin/admin_page.html')
+
+def me(request):
+    #auth.logout(request)
+    return render(request,'blog/me.html')

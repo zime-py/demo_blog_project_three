@@ -25,25 +25,25 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Abdullah Al Hasib </a>
+      <a class="navbar-brand" href="#">Well come to ISLAM </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item deactive"> <!--- also write "nav-item active"--->
             <a class="nav-link" href="{% url 'post_list' %}">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="{% url 'me' %}">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="{% url 'contact'%}">Contact</a>
           </li>
         </ul>
       </div>
@@ -58,22 +58,28 @@
       <!-- Blog Entries Column -->
       <div class="col-md-8">
 
-        <h1 class="my-4">Page Heading
-          <small>Secondary Text</small>
-        </h1>
+        <!---<h1 class="my-4">Click to
+          <small>Read</small>
+        </h1>--->
         {% block content %}
  
         {% endblock %}
+        
+          <!-- NEW -->
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
           <li class="page-item">
-            <a class="page-link" href="#">← Older</a>
+              {% if posts.has_previous %}
+              <a href="?page={{ posts.previous_page_number }}"> Previus &rarr;</a>| <!-- problem ,how to indicate back--->
+            {% endif %}
           </li>
           <li class="page-item disabled">
-            <a class="page-link" href="#">Newer →</a>
+            {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}"> Next &rarr; </a> <!-- its show a arrow symbole-->
+            {% endif %}
           </li>
+          
         </ul>
-
       </div>
 
       <!-- Sidebar Widgets Column -->
@@ -84,7 +90,7 @@
           <h5 class="card-header">Search</h5>
           <div class="card-body">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
+              <input type="text" class="form-control" placeholder="Search ...">
               <span class="input-group-btn">
                 <button class="btn btn-secondary" type="button">Go!</button>
               </span>
@@ -95,7 +101,7 @@
         
              <!-- Categories Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Categories</h5>  
+          <h5 class="card-header">Categories</h5>
           <div class="card-body">
             <div class="row">
                <!-- new -->
@@ -145,12 +151,13 @@
         </div>
 
         <!-- Side Widget -->
+        <!-- 
         <div class="card my-4">
           <h5 class="card-header">Side Widget</h5>
           <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            You can put anything you want inside of these side widgets.
           </div>
-        </div>
+        </div> -->
 
       </div>
 
@@ -161,9 +168,10 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-3 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright © Your Website 2019</p>
+      <p class="m-0 text-center text-white">Create concrite 2019</p>
+      
     </div>
     <!-- /.container -->
   </footer>

@@ -4,5 +4,12 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/master/LICENSE)
  */
 body {
-  padding-top: 56px;
+  padding-top: 70px;
+
 }
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  background-color:whitesmoke;
+}
+ 

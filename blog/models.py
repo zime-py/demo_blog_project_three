@@ -56,6 +56,7 @@ class Contact(models.Model):
     subject = models.CharField(max_length=200, blank = True, null = True)
     message = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    
  
     class Meta:
         verbose_name_plural = "Feedback"

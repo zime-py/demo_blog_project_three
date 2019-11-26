@@ -1,9 +1,10 @@
 {% extends "blog/base.html"  %}
  
-{% block content %}  
+{% block content %}
+
 <div class="card mb-4">
-       
-    <img class="card-img-top" src="#" alt="Card image cap">
+  {% if post %}  
+    
     <div class="card-body">
      
       <p><h2 class="card-title"><a href="#">{{ post.title|capfirst }}</a></h2></p>
@@ -12,6 +13,8 @@
 
       <p class="card-text">{{ post.content }}</p>
     </div>
+    {% else %}
+    <h5>{{ msg }}</h5>
+    {% endif %}
   </div>
-
 {% endblock %}
